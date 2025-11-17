@@ -7,7 +7,14 @@ import random as rd
 # ---------------------------------------------------------------------
 # Gera matriz de adjacências
 def GerarProblema(n, min1, max1):
+    # Gera matriz simétrica (grafo completo) com diagonal zero.
+    # Mantemos o mesmo comportamento de intervalo do randint: [min1, max1)
     mat = np.random.randint(min1, max1, (n, n))
+    # Mantém apenas triângulo superior (sem diagonal) e espelha para simetria
+    mat = np.triu(mat, 1)
+    mat = mat + mat.T
+    # diagonal deve ser zero (sem custo de ida/volta para o mesmo nó)
+    np.fill_diagonal(mat, 0)
     return mat
 
 

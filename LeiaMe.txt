@@ -1,0 +1,47 @@
+Instruções de execução — Projeto PCV (Problema do Caixeiro Viajante)
+
+Resumo
+-------
+Este projeto contém implementações de buscas locais para o Problema do Caixeiro Viajante
+e uma interface gráfica simples em Tkinter (`Front.py`) que permite gerar um problema,
+criar uma solução inicial e executar métodos de busca local (subida de encosta,
+subida de encosta com tentativas, têmpera simulada e algoritmos genéticos).
+
+Dependências
+------------
+As bibliotecas externas necessárias estão listadas em `dependecias.txt`.
+Instale-as com pip:
+
+No PowerShell / bash (Windows):
+
+    cd /c/Users/sebas/OneDrive/Desktop/IA/codigo/Trabalho_IA_caxeiro_viajante/pcv-buscas-locais
+    python -m pip install -r dependecias.txt
+
+Requisitos de Python
+--------------------
+- Python 3.8 ou superior (testado com Python 3.10+)
+- Tkinter já faz parte da instalação padrão do Python em muitas distribuições; se não estiver disponível,
+  instale o pacote correspondente ao seu sistema operacional.
+
+Como executar
+--------------
+1. Entre na pasta do projeto:
+
+    cd /c/Users/sebas/OneDrive/Desktop/IA/codigo/Trabalho_IA_caxeiro_viajante/pcv-buscas-locais
+
+2. Execute a interface gráfica:
+
+    python Front.py
+
+3. Fluxo de uso na GUI:
+- Informe o número de cidades (o valor mínimo exigido é 30).
+- Clique em `Gerar Problema` para criar a matriz de custo (grafo completo, simétrico).
+- Clique em `Gerar Solução Inicial` para criar uma rota inicial aleatória.
+- Selecione um método no combo `Método de busca local` e clique em `Executar Método`.
+- Os resultados (rota e distância) aparecem no painel de texto; a rota também é destacada no grafo.
+
+Observações
+-----------
+- A matriz de custos gerada é simétrica e com zeros na diagonal (representa grafo completo).
+- Os métodos de busca local estão implementados nos módulos `metodosBusca.py`, `tspUtils.py` e `ag_pcv.py`.
+- Existe suporte para rotas vindas como `list` ou `numpy.array`.
