@@ -1,0 +1,15 @@
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Arquivos do PyCharm
+.idea/
+
+# Arquivos compilados Python
+__pycache__/
+*.pyc
+
+# Arquivos de relatório/temporários
+relatorio_pcv.txt
+*.log
