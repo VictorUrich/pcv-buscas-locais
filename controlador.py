@@ -190,10 +190,21 @@ def executar_metodo(metodo, parametros=None):
 # 3) Função para o botão "Análise Comparativa"
 # -------------------------------------------------------------------
 
+import os
+from relatorio import gerar_texto_relatorio_atual, salvar_relatorio_txt
+
 def obter_texto_relatorio():
     """
-    Texto do relatório em formato pronto para:
-    - ser mostrado num campo de texto, ou
-    - ser salvo em .txt e depois exportado para PDF.
+    Gera e salva automaticamente o relatório como TXT
+    e também devolve o texto para a interface mostrar.
     """
-    return gerar_texto_relatorio_atual()
+    texto = gerar_texto_relatorio_atual()
+
+    # salva automáticamente no diretório do projeto
+    caminho = os.path.join(os.getcwd(), "relatorio_pcv.txt")
+    salvar_relatorio_txt(caminho)
+
+    print(f"Relatório salvo automaticamente em:\n{caminho}")
+
+    return texto
+

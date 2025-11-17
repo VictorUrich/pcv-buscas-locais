@@ -1,4 +1,5 @@
-# relatorio.py
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
 
 CURRENT_REPORT = None
 # {
@@ -84,4 +85,30 @@ def salvar_relatorio_txt(caminho="relatorio_pcv.txt"):
     texto = gerar_texto_relatorio_atual()
     with open(caminho, "w", encoding="utf-8") as f:
         f.write(texto)
+    return caminho
+
+
+def salvar_relatorio_pdf(caminho="relatorio_pcv.pdf"):
+    texto = gerar_texto_relatorio_atual()
+
+    # Criar PDF
+    c = canvas.Canvas(caminho, pagesize=A4)
+
+    largura, altura = A4
+    x = 40
+    y = altura - 40
+
+    c.setFont("Helvetica", 12)
+
+    for linha in texto.split("\n"):
+        c.drawString(x, y, linha)
+        y -= 16
+
+        # Criar nova página se o texto passar do limite
+        if y < 40:
+            c.showPage()
+            c.setFont("Helvetica", 12)
+            y = altura - 40
+
+    c.save()
     return caminho

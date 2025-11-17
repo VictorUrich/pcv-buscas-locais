@@ -3,6 +3,7 @@ from controlador import (
     executar_metodo,
     obter_texto_relatorio
 )
+from relatorio import salvar_relatorio_pdf
 
 def linha():
     print("-" * 60)
@@ -45,3 +46,5 @@ if __name__ == "__main__":
     # 6) Exibir relatório completo
     print("\nRELATÓRIO COMPLETO:\n")
     print(obter_texto_relatorio())
+
+    salvar_relatorio_pdf("relatorio_pcv.pdf")
